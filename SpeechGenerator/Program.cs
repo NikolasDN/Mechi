@@ -13,8 +13,10 @@ namespace SpeechGenerator
             while(true)
             {
                 Cmd("espeak", "-a 200 -p 50 -vnl+m1 \"Ik heb lekker geslapen\"");
+                Thread.Sleep(3000);
+                Cmd("espeak", "-a 200 -p 50 -vnl+m1 \"Even de krant lezen\"");
 
-                Thread.Sleep(100);
+                Thread.Sleep(3000);
             }
 
             Console.WriteLine("SpeechGenerator stopped");
