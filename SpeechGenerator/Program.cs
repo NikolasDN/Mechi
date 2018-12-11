@@ -9,18 +9,21 @@ namespace SpeechGenerator
         {
             Console.WriteLine("Starting SpeechGenerator");
 
-            Cmd("espeak.exe -a 200 -p 50 -vnl+m1 \"Mmm, ik heb lekker geslapen\"");
+            Cmd("espeak", "-a 200 -p 50 -vnl+m1 \"Mmm, ik heb lekker geslapen\"");
 
             Console.WriteLine("SpeechGenerator stopped");
         }
 
-        static string Cmd(string cmd)
+        static string Cmd(string cmd, string arguments)
         {
+            var escapedArgs = cmd.Replace("\"", "\\\"");
+
             var process = new Process()
             {
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = cmd,
+                    Arguments = arguments,
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
