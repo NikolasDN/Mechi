@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace SpeechGenerator
 {
@@ -9,7 +10,12 @@ namespace SpeechGenerator
         {
             Console.WriteLine("Starting SpeechGenerator");
 
-            Cmd("espeak", "-a 200 -p 50 -vnl+m1 \"Ik heb lekker geslapen\"");
+            while(true)
+            {
+                Cmd("espeak", "-a 200 -p 50 -vnl+m1 \"Ik heb lekker geslapen\"");
+
+                Thread.Sleep(100);
+            }
 
             Console.WriteLine("SpeechGenerator stopped");
         }
