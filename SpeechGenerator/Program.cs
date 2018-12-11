@@ -9,7 +9,7 @@ namespace SpeechGenerator
         {
             Console.WriteLine("Starting SpeechGenerator");
 
-            Cmd("espeak", "-a 200 -p 50 -vnl+m1 \"Mmm, ik heb lekker geslapen\"");
+            Cmd("espeak", "-a 200 -p 50 -vnl+m1 \"Ik heb lekker geslapen\"");
 
             Console.WriteLine("SpeechGenerator stopped");
         }
