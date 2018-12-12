@@ -18,31 +18,16 @@ namespace SpeechGenerator
 
             var linesToRead = ReadNewspaper();
 
-            // while(true)
-            // {
             foreach(var line in linesToRead)
             {
                 Speak(line);
                 Thread.Sleep(2000);
             }              
-                
-            //}
-
-            //Console.WriteLine("SpeechGenerator stopped");
         }
 
         static List<string> ReadNewspaper()
         {
             List<string> result = new List<string>();
-            // HttpClient httpClient = new HttpClient();
-            // string html = httpClient.GetStringAsync("http://www.standaard.be/").GetAwaiter().GetResult();
-            // XmlDocument doc = new XmlDocument();
-            // doc.LoadXml(html);
-            // XmlNodeList elemList = doc.GetElementsByTagName("article");
-            // for (int i = 0; i < elemList.Count; i++)
-            // {
-            //     result.Add(elemList[i].Attributes["data-vr-contentbox"].Value);
-            // }
             var html = @"http://www.standaard.be/";
             HtmlWeb web = new HtmlWeb();
             var htmlDoc = web.Load(html);
