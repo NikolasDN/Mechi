@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/SpeechGenerator.csproj"
+                "${workspaceFolder}/Robot.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
