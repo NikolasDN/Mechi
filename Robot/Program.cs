@@ -14,8 +14,8 @@ namespace Robot
             }
 
             Console.WriteLine("Hello Mechi!");
-            Say("goeiemiddag");
-            Say("lucas");
+            Say("goeieavond");
+            Say("soeshi");
         }
 
         static void Say(string toSay)
