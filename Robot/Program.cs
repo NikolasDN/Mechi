@@ -13,9 +13,10 @@ namespace Robot
                 env = args[0];
             }
 
-            Console.WriteLine("Hello Mechi!");
-            Say("goeieavond");
-            Say("soeshi");
+            Console.WriteLine($"Starting Mechi for {env}!");
+            Say("ikheblekkergeslapen");
+
+            //Seeer.StartCapture();            
         }
 
         static void Say(string toSay)
