@@ -9,6 +9,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="OpenCvSharp3-AnyCPU" Version="4.0.0.20181129"/>
+    <PackageReference Include="OpenCvSharp3-WithoutDll" Version="3.4.4.20181118"/>
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using OpenCvSharp;
 
 namespace Robot
@@ -6,7 +7,7 @@ namespace Robot
     public class Seeer
     {
         static VideoCapture _capture;
-        public static void StartCapture()
+        public async static Task HandleCapture()
         {
             if (_capture == null)
             {
