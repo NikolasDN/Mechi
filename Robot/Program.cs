@@ -17,6 +17,8 @@ namespace Robot
 
             Console.WriteLine($"Starting Mechi for {Helper.Env}!");
             Speaker.Say("ikheblekkergeslapen");
+            //Speaker.Say("hallo");
+            //Speaker.Say("soeshi");
 
             var speaker = Speaker.HandleAllTalk();
             var seeer = Seeer.HandleCapture();
