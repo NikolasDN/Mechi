@@ -7,5 +7,8 @@
     "test": "test"
   },
   "author": "Nikolas, Jolan, Lucas",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "opencv4nodejs": "^4.14.0"
+  }
 }

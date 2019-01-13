@@ -1,14 +1,20 @@
-console.log("Hallo allemaal");
+const {
+    cv
+  } = require('./utils');
+const { runVideoFaceDetection } = require('./commons');
 
-console.log("mag ik spelen");
+const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT2);
 
-var nummertje1;
-nummertje1 = 3;
-var nummertje2;
-nummertje2 = 8;
-var nummertje3;
-nummertje3 = nummertje1 - nummertje2;
-console.log(nummertje3);
-var naam1 = "lucas";
-var naam2 = "jolan";
-console.log(naam1 + naam2);
+const webcamPort = 0;
+
+function detectFaces(img) {
+  // restrict minSize and scaleFactor for faster processing
+  const options = {
+    minSize: new cv.Size(100, 100),
+    scaleFactor: 1.2,
+    minNeighbors: 10
+  };
+  return classifier.detectMultiScale(img.bgrToGray(), options).objects;
+}
+
+runVideoFaceDetection(webcamPort, detectFaces);
