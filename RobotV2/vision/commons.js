@@ -3,8 +3,9 @@ const {
     grabFrames,
     drawBlueRect
   } = require('./utils');
-  const loadFacenet = require('../dnn/loadFacenet');
-  const { extractResults } = require('../dnn/ssdUtils');
+  const loadFacenet = require('./dnn/loadFacenet');
+  const { extractResults } = require('./dnn/ssdUtils');
+  const uuid = require('uuid/v1');
   
   exports.runVideoFaceDetection = (src, detectFaces) => grabFrames(src, 1, (frame) => {
     console.time('detection time');
@@ -15,9 +16,10 @@ const {
     if (faceRects.length) {
       // draw detection
       faceRects.forEach(faceRect => drawBlueRect(frameResized, faceRect));
+
+      cv.imwrite(`./output/${uuid()}.png`, frameResized);
     }
   
-    cv.imwrite('./output/img.png', frameResized);
     //cv.imshow('face detection', frameResized);
     console.timeEnd('detection time');
   });
