@@ -1,6 +1,6 @@
 const {
     cv
-  } = require('../utils');
+  } = require('../vision/utils');
   
   
   exports.extractResults = function (outputBlob, imgDimensions) {

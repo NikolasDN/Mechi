@@ -8,10 +8,8 @@ todo
 
     mkdir Mechi
     cd Mechi
-    wget https://raw.githubusercontent.com/NikolasDN/Mechi/master/install.sh
-    bash install.sh
+    TODO
 
 ## Starting Mechi
 
-    wget https://raw.githubusercontent.com/NikolasDN/Mechi/master/start.sh
-    bash start.sh
+    node app.js

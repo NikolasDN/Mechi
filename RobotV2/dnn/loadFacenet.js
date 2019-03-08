@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const {
   cv
-} = require('../utils');
+} = require('../vision/utils');
 
 module.exports = function () {
   const modelPath = path.resolve(__dirname, '../../data/dnn/facenet');

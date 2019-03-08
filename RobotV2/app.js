@@ -1,7 +1,7 @@
 const {
     cv
-  } = require('./utils');
-const { runVideoFaceDetection } = require('./commons');
+  } = require('./vision/utils');
+const { runVideoFaceDetection } = require('./vision/commons');
 
 const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT2);
 
