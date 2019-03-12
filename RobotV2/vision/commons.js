@@ -15,9 +15,12 @@ const {
     const faceRects = detectFaces(frameResized);
     if (faceRects.length) {
       // draw detection
-      faceRects.forEach(faceRect => drawBlueRect(frameResized, faceRect));
+      faceRects.forEach(faceRect => {
+        drawBlueRect(frameResized, faceRect);
 
-      cv.imwrite(`./output/${uuid()}.png`, frameResized);
+        const newImg = frameResized.getRegion(faceRect);
+        cv.imwrite(`./output/${uuid()}.png`, newImg);
+      } );
     }
   
     //cv.imshow('face detection', frameResized);
