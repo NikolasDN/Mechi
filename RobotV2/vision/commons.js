@@ -18,8 +18,9 @@ const {
       faceRects.forEach(faceRect => {
         drawBlueRect(frameResized, faceRect);
 
-        const newImg = frameResized.getRegion(faceRect);
+        const newImg = frameResized.getRegion(faceRect).resize(80, 80);
         cv.imwrite(`./output/${uuid()}.png`, newImg);
+        console.log('hallo');
       } );
     }
   
