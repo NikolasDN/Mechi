@@ -9,6 +9,8 @@
   "author": "Nikolas, Jolan, Lucas",
   "license": "ISC",
   "dependencies": {
+    "cron": "^1.7.0",
+    "express": "^4.16.4",
     "opencv4nodejs": "^4.14.0",
     "uuid": "^3.3.2"
   }

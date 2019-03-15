@@ -16,7 +16,7 @@ const {
     if (faceRects.length) {
       // draw detection
       faceRects.forEach(faceRect => {
-        drawBlueRect(frameResized, faceRect);
+        //drawBlueRect(frameResized, faceRect);
 
         const newImg = frameResized.getRegion(faceRect).resize(80, 80);
         cv.imwrite(`./output/${uuid()}.png`, newImg);
