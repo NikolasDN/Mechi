@@ -2,6 +2,9 @@ const {
     cv
   } = require('./vision/utils');
 const { runVideoFaceDetection } = require('./vision/commons');
+const CronJob = require('cron').CronJob;
+const talking = require('./speech/talking');
+
 
 const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT2);
 
@@ -16,5 +19,11 @@ function detectFaces(img) {
   };
   return classifier.detectMultiScale(img.bgrToGray(), options).objects;
 }
+
+const talkingJob = new CronJob('*/5 * * * * *', function() {
+  //console.log('You will see this message every second');
+  talking.saySomething();
+});
+talkingJob.start();
 
 runVideoFaceDetection(webcamPort, detectFaces);
