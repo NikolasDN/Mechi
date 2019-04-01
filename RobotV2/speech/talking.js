@@ -1,9 +1,12 @@
 const player = require('play-sound')(opts = { player: 'mpg123' });
 let subject = 'ikheblekkergeslapen';
-let target = null;
+let lastTalk = Date.now();
 
-function saySomething() {
+function saySomething(target) {
+    // check time
+    if (Date.now() < lastTalk + 10000) return;
     if (target == null) return;
+    lastTalk = Date.now();
 
     // greeting
     let greeting = "hallo";
@@ -38,11 +41,6 @@ function saySomething() {
     target = null;
 }
 
-function setTarget(value) {
-    target = value;
-}
-
 module.exports = {
-    saySomething,
-    setTarget
+    saySomething
 }

@@ -20,10 +20,10 @@ function detectFaces(img) {
   return classifier.detectMultiScale(img.bgrToGray(), options).objects;
 }
 
-const talkingJob = new CronJob('*/5 * * * * *', function() {
-  //console.log('You will see this message every second');
-  talking.saySomething();
+const batteryCheck = new CronJob('* * * * * *', function() {
+  //console.log('You will see this message every minute');
+  
 });
-talkingJob.start();
+batteryCheck.start();
 
 runVideoFaceDetection(webcamPort, detectFaces);

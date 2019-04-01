@@ -22,9 +22,11 @@ const {
         const newImg = frameResized.getRegion(faceRect).resize(80, 80);
         cv.imwrite(`./output/${uuid()}.png`, newImg);
         //console.log('hallo');
-        talking.setTarget('');
-
-      } );
+      //   talking.setTarget('');
+        talking.saySomething('');
+       } 
+      );
+      
     }
   
     //cv.imshow('face detection', frameResized);
