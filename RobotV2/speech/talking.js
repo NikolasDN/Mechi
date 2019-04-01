@@ -24,14 +24,16 @@ function saySomething(target) {
     if (current_hour >= 21 && current_hour < 24) {
         greeting = "slaapwel";
     }
-
-    console.log(greeting);
-    player.play("./speech/" + greeting + ".mp3", (err) => {
-        if (err) throw err;
-    });
+    
     if (subject) {
         console.log(subject);
         player.play("./speech/" + subject + ".mp3", (err) => {
+            if (err) throw err;
+        });
+    }
+    else {
+        console.log(greeting);
+        player.play("./speech/" + greeting + ".mp3", (err) => {
             if (err) throw err;
         });
     }
@@ -41,6 +43,11 @@ function saySomething(target) {
     target = null;
 }
 
+function setSubject(s) {
+    subject = s;
+}
+
 module.exports = {
-    saySomething
+    saySomething,
+    setSubject
 }
