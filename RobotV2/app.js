@@ -24,7 +24,7 @@ function detectFaces(img) {
 const batteryCheck = new CronJob('0 * * * * *', function() {
   //console.log('You will see this message every minute');
   si.battery((info) => {
-    if (info.percent < 50) {
+    if (info.percent < 20) {
       talking.setSubject('mijnbatterijisbijnaplat');
     }
   });
