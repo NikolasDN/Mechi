@@ -33,6 +33,7 @@ const batteryCheck = new CronJob('0 * * * * *', () => {
 const updateCheck = new CronJob('0 */5 * * * *', () => {
   git.pull(() => {
     // update should be pulled
+    console.log('updated');
   });
 });
 
