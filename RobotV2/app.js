@@ -4,7 +4,7 @@ const {
 const { runVideoFaceDetection } = require('./vision/commons');
 const CronJob = require('cron').CronJob;
 const si = require('systeminformation');
-const git = require('simple-git');
+const git = require('simple-git')();
 const talking = require('./speech/talking');
 
 
@@ -30,7 +30,7 @@ const batteryCheck = new CronJob('0 * * * * *', () => {
     }
   });
 });
-const updateCheck = new CronJob('0 */5 * * * *', () => {
+const updateCheck = new CronJob('* * * * * *', () => {
   git.pull(() => {
     // update should be pulled
     console.log('updated');
