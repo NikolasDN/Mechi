@@ -48,3 +48,5 @@ talking.setSubject('ikheblekkergeslapen');
 talking.saySomething('', true);
 
 runVideoFaceDetection(webcamPort, detectFaces);
+
+// test
