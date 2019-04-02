@@ -30,11 +30,13 @@ const batteryCheck = new CronJob('0 * * * * *', () => {
     }
   });
 });
-const updateCheck = new CronJob('* * * * * *', () => {
-  git.pull(() => {
-    // update should be pulled
-    console.log('updated');
-  });
+const updateCheck = new CronJob('0 */5 * * * *', () => {
+  talking.setSubject('ikgaeveneendutjedoen');
+  setTimeout(
+    git.pull(() => {
+      // update should be pulled
+      console.log('updated');
+    }), 5000);
 });
 
 batteryCheck.start();
