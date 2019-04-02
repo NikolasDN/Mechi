@@ -2,10 +2,12 @@ const player = require('play-sound')(opts = { player: 'mpg123' });
 let subject = 'ikheblekkergeslapen';
 let lastTalk = Date.now();
 
-function saySomething(target) {
+function saySomething(target, ignoreLastTalk) {
     // check time
-    if (Date.now() < lastTalk + 10000) return;
-    if (target == null) return;
+    if (!ignoreLastTalk) {
+        if (Date.now() < lastTalk + 10000) return;        
+    }
+    if (target == null) return;    
     lastTalk = Date.now();
 
     // greeting

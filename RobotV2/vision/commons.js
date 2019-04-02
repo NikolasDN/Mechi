@@ -25,7 +25,7 @@ const {
           cv.imwrite(`./output/${uuid()}.png`, newImg);
         }        
         
-        talking.saySomething('');
+        talking.saySomething('', false);
        } 
       );
       
