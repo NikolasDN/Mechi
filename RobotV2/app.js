@@ -4,6 +4,7 @@ const {
 const { runVideoFaceDetection } = require('./vision/commons');
 const CronJob = require('cron').CronJob;
 const si = require('systeminformation');
+const git = require('simple-git');
 const talking = require('./speech/talking');
 
 
@@ -21,7 +22,7 @@ function detectFaces(img) {
   return classifier.detectMultiScale(img.bgrToGray(), options).objects;
 }
 
-const batteryCheck = new CronJob('0 * * * * *', function() {
+const batteryCheck = new CronJob('0 * * * * *', () => {
   //console.log('You will see this message every minute');
   si.battery((info) => {
     if (info.percent < 20) {
@@ -29,6 +30,13 @@ const batteryCheck = new CronJob('0 * * * * *', function() {
     }
   });
 });
+const updateCheck = new CronJob('0 */5 * * * *', () => {
+  git.pull(() => {
+    // update should be pulled
+  });
+});
+
 batteryCheck.start();
+updateCheck.start();
 
 runVideoFaceDetection(webcamPort, detectFaces);
