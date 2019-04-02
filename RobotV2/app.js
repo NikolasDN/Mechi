@@ -44,4 +44,7 @@ const updateCheck = new CronJob('0 * * * * *', () => {
 batteryCheck.start();
 updateCheck.start();
 
+talking.setSubject('ikheblekkergeslapen');
+talking.saySomething('', true);
+
 runVideoFaceDetection(webcamPort, detectFaces);

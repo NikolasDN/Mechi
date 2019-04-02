@@ -1,5 +1,5 @@
 const player = require('play-sound')(opts = { player: 'mpg123' });
-let subject = 'ikheblekkergeslapen';
+let subject = null;
 let lastTalk = Date.now();
 
 function saySomething(target, ignoreLastTalk) {
