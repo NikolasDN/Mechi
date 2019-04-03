@@ -1,15 +1,23 @@
 const player = require('play-sound')(opts = { player: 'mpg123' });
 let subject = null;
-let lastTalk = Date.now();
 let names = [];
+let isTalking = false;
+let lastTarget = '';
+let lastSubject = null;
 
-function saySomething(target, ignoreLastTalk) {
-    // check time
-    if (!ignoreLastTalk) {
-        if (Date.now() < lastTalk + 10000) return;        
+function saySomething(target) {
+    if (isTalking) return;
+    if (target == null) return;   
+
+    // niks zeggen als het exact hetzelfde is
+    if (lastTarget == target && lastSubject == subject) {
+        return;
     }
-    if (target == null) return;    
-    lastTalk = Date.now();
+
+    // niet opnieuw dezelfde persoon groeten
+    if (lastTarget == target && lastSubject == null) {
+        return;
+    }
 
     // greeting
     let greeting = "hallo";
@@ -27,30 +35,43 @@ function saySomething(target, ignoreLastTalk) {
     if (current_hour >= 21 && current_hour < 24) {
         greeting = "slaapwel";
     }
-    
-    if (target != '') {
-        player.play("./speech/" + target + ".mp3", (err) => {
-            if (err) throw err;
-        });
-    }
-    else {
-        if (subject) {
-            console.log(subject);
-            player.play("./speech/" + subject + ".mp3", (err) => {
+
+    isTalking = true;
+    player.play("./speech/" + greeting + ".mp3", (err) => {
+        if (err) throw err;
+
+        if (target != '') {
+            lastTarget = target;
+            player.play("./speech/" + target + ".mp3", (err) => {
                 if (err) throw err;
+
+                if (subject) {
+                    lastSubject = subject;
+                    player.play("./speech/" + subject + ".mp3", (err) => {
+                        if (err) throw err;
+
+                        isTalking = false;
+
+                        // cleanup
+                        subject = null;
+                    });
+                }
+                else {
+                    isTalking = false;
+
+                    // cleanup
+                    subject = null;
+                }
             });
         }
         else {
-            console.log(greeting);
-            player.play("./speech/" + greeting + ".mp3", (err) => {
-                if (err) throw err;
-            });
-        }
-    }
+            isTalking = false;
 
-    // cleanup
-    subject = null;
-    target = null;
+            // cleanup
+            subject = null;
+        }        
+    });
+    
 }
 
 function setSubject(s) {
