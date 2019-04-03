@@ -5,6 +5,8 @@ const { runVideoFaceDetection } = require('./vision/commons');
 const CronJob = require('cron').CronJob;
 const si = require('systeminformation');
 const git = require('simple-git')();
+const fs = require('fs');
+const nameMappings = ['jolan', 'lucas', 'papa'];
 const talking = require('./speech/talking');
 
 
@@ -22,7 +24,18 @@ function detectFaces(img) {
   return classifier.detectMultiScale(img.bgrToGray(), options).objects;
 }
 
-const batteryCheck = new CronJob('0 * * * * *', () => {
+function trainFaces() {
+  nameMappings.forEach(name => {
+    fs.readdir('output/' + name, (err, files) => {
+      files.forEach(file => {
+        console.log(file);
+      });
+    });
+  });
+  
+}
+
+const batteryCheck = new CronJob('0 */5 * * * *', () => {
   //console.log('You will see this message every minute');
   si.battery((info) => {
     if (info.percent < 20) {
@@ -40,6 +53,8 @@ const updateCheck = new CronJob('0 */15 * * * *', () => {
     });
   }, 5000);
 });
+
+trainFaces();
 
 batteryCheck.start();
 updateCheck.start();
