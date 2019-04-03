@@ -27,14 +27,13 @@ function detectFaces(img) {
 }
 
 function trainFaces() {
-  //nameMappings.forEach(name => {
   let trainImages = [];
   let labels = [];
-  talking.names = fs.readdirSync('output/'); //, (err, folders) => {
+  talking.names = fs.readdirSync('output/');
   let nameNr = 0;
   talking.names.forEach(folder => {
     
-    let files = fs.readdirSync('output/' + folder + '/'); //, (err, files) => {
+    let files = fs.readdirSync('output/' + folder + '/');
     if (files) {
       files.forEach(file => {
         console.log(file);
