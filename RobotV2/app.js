@@ -6,8 +6,9 @@ const CronJob = require('cron').CronJob;
 const si = require('systeminformation');
 const git = require('simple-git')();
 const fs = require('fs');
+const path = require('path');
 const loudness = require('mwl-loudness');
-const nameMappings = ['jolan', 'lucas', 'papa'];
+const fisher = new cv.FisherFaceRecognizer();
 const talking = require('./speech/talking');
 
 
@@ -26,14 +27,26 @@ function detectFaces(img) {
 }
 
 function trainFaces() {
-  nameMappings.forEach(name => {
-    fs.readdir('output/' + name, (err, files) => {
+  //nameMappings.forEach(name => {
+  let trainImages = [];
+  let labels = [];
+  talking.names = fs.readdirSync('output/'); //, (err, folders) => {
+  let nameNr = 0;
+  talking.names.forEach(folder => {
+    
+    let files = fs.readdirSync('output/' + folder + '/'); //, (err, files) => {
+    if (files) {
       files.forEach(file => {
         console.log(file);
+        let trainImage = cv.imread(path.resolve('output/' + folder + '/', file));
+        trainImage = trainImage.bgrToGray();
+        trainImages.push(trainImage);
+        labels.push(nameNr);            
       });
-    });
+    }
+    nameNr++;
   });
-  
+  fisher.train(trainImages, labels);
 }
 
 const batteryCheck = new CronJob('0 */5 * * * *', () => {
@@ -67,6 +80,6 @@ loudness.setVolume(100, function (err) {
 talking.setSubject('ikheblekkergeslapen');
 talking.saySomething('', true);
 
-runVideoFaceDetection(webcamPort, detectFaces);
+runVideoFaceDetection(webcamPort, detectFaces, fisher);
 
 // test

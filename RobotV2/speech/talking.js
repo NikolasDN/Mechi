@@ -1,6 +1,7 @@
 const player = require('play-sound')(opts = { player: 'mpg123' });
 let subject = null;
 let lastTalk = Date.now();
+let names = [];
 
 function saySomething(target, ignoreLastTalk) {
     // check time
@@ -27,17 +28,24 @@ function saySomething(target, ignoreLastTalk) {
         greeting = "slaapwel";
     }
     
-    if (subject) {
-        console.log(subject);
-        player.play("./speech/" + subject + ".mp3", (err) => {
+    if (target != '') {
+        player.play("./speech/" + target + ".mp3", (err) => {
             if (err) throw err;
         });
     }
     else {
-        console.log(greeting);
-        player.play("./speech/" + greeting + ".mp3", (err) => {
-            if (err) throw err;
-        });
+        if (subject) {
+            console.log(subject);
+            player.play("./speech/" + subject + ".mp3", (err) => {
+                if (err) throw err;
+            });
+        }
+        else {
+            console.log(greeting);
+            player.play("./speech/" + greeting + ".mp3", (err) => {
+                if (err) throw err;
+            });
+        }
     }
 
     // cleanup
@@ -51,5 +59,6 @@ function setSubject(s) {
 
 module.exports = {
     saySomething,
-    setSubject
+    setSubject,
+    names
 }

@@ -7,9 +7,9 @@ const {
   const { extractResults } = require('./dnn/ssdUtils');
   const uuid = require('uuid/v1');
   const talking = require('../speech/talking');
-  const learning = false;
+  const learning = true;
   
-  exports.runVideoFaceDetection = (src, detectFaces) => grabFrames(src, 1, (frame) => {
+  exports.runVideoFaceDetection = (src, detectFaces, recognizer) => grabFrames(src, 1, (frame) => {
     console.time('detection time');
     const frameResized = frame.resizeToMax(800);
   
@@ -20,12 +20,20 @@ const {
       faceRects.forEach(faceRect => {
         //drawBlueRect(frameResized, faceRect);
 
-        if (learning) {
-          const newImg = frameResized.getRegion(faceRect).resize(80, 80);
+        const newImg = frameResized.getRegion(faceRect).resize(80, 80);
+        if (learning) {          
           cv.imwrite(`./output/${uuid()}.png`, newImg);
         }        
-        
-        talking.saySomething('', false);
+        // recognition
+        const img = newImg.bgrToGray();
+        const result = recognizer.predict(img);
+        //console.log('predicted: %s, confidence: %s', talking.names[result.label], result.confidence);
+        let target = '';
+        if (result.label) {
+          target = talking.names[result.label];
+        }
+
+        talking.saySomething(target, false);
        } 
       );
       
