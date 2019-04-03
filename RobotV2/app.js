@@ -30,7 +30,7 @@ const batteryCheck = new CronJob('0 * * * * *', () => {
     }
   });
 });
-const updateCheck = new CronJob('0 * * * * *', () => {
+const updateCheck = new CronJob('0 */15 * * * *', () => {
   talking.setSubject('ikgaeveneendutjedoen');
   talking.saySomething('', true);
   setTimeout(() => {
