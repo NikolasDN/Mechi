@@ -6,6 +6,7 @@ const CronJob = require('cron').CronJob;
 const si = require('systeminformation');
 const git = require('simple-git')();
 const fs = require('fs');
+const loudness = require('mwl-loudness');
 const nameMappings = ['jolan', 'lucas', 'papa'];
 const talking = require('./speech/talking');
 
@@ -58,6 +59,10 @@ trainFaces();
 
 batteryCheck.start();
 updateCheck.start();
+
+loudness.setVolume(100, function (err) {
+  // Done
+});
 
 talking.setSubject('ikheblekkergeslapen');
 talking.saySomething('', true);
