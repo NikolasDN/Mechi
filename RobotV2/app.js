@@ -69,15 +69,15 @@ const updateCheck = new CronJob('0 */15 * * * *', () => {
 
 trainFaces();
 
-batteryCheck.start();
-updateCheck.start();
-
 loudness.setVolume(100, function (err) {
   // Done
 });
 
 talking.setSubject('ikheblekkergeslapen');
 talking.saySomething('', true);
+
+batteryCheck.start();
+updateCheck.start();
 
 runVideoFaceDetection(webcamPort, detectFaces, fisher);
 
