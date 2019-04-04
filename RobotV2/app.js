@@ -8,7 +8,8 @@ const git = require('simple-git')();
 const fs = require('fs');
 const path = require('path');
 const loudness = require('mwl-loudness');
-const recognizer = new cv.FisherFaceRecognizer();
+//const recognizer = new cv.FisherFaceRecognizer();
+const recognizer = new cv.LBPHFaceRecognizer();
 const talking = require('./speech/talking');
 
 
