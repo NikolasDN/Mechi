@@ -8,7 +8,7 @@ const git = require('simple-git')();
 const fs = require('fs');
 const path = require('path');
 const loudness = require('mwl-loudness');
-const fisher = new cv.FisherFaceRecognizer();
+const recognizer = new cv.FisherFaceRecognizer();
 const talking = require('./speech/talking');
 
 
@@ -45,7 +45,7 @@ function trainFaces() {
     }
     nameNr++;
   });
-  fisher.train(trainImages, labels);
+  recognizer.train(trainImages, labels);
 }
 
 const batteryCheck = new CronJob('0 */5 * * * *', () => {
@@ -79,6 +79,6 @@ talking.saySomething('', true);
 batteryCheck.start();
 updateCheck.start();
 
-runVideoFaceDetection(webcamPort, detectFaces, fisher);
+runVideoFaceDetection(webcamPort, detectFaces, recognizer);
 
 // test
