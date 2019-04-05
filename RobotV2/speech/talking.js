@@ -34,10 +34,7 @@ function saySomething(target) {
     console.log(thingToSay);
 
     isTalking = true;
-    // safety
-    setTimeout(() => {
-        isTalking = false;
-    }, latency * 3);
+    
     player.play("./speech/" + greeting + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
         if (err) throw err;
     });
@@ -100,5 +97,6 @@ module.exports = {
     saySomething,
     setSubject,
     names,
-    thingsSaid
+    thingsSaid,
+    isTalking
 }

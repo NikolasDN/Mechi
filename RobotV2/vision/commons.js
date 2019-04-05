@@ -31,6 +31,7 @@ const {
         let target = '';
         if (result.label) {
           target = talking.names[result.label];
+          console.log('ik herken: ' + target);
         }
 
         talking.saySomething(target, false);
