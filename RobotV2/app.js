@@ -50,11 +50,13 @@ function trainFaces() {
 }
 
 const talkingCheck = new CronJob('*/5 * * * * *', () => {
+  console.log('talkingCheck');
   talking.isTalking = false;
 });
 
 const batteryCheck = new CronJob('0 */5 * * * *', () => {
   //console.log('You will see this message every minute');
+  console.log('batteryCheck');
   talking.thingsSaid = [];
   si.battery((info) => {
     if (info.percent < 20) {
@@ -63,6 +65,7 @@ const batteryCheck = new CronJob('0 */5 * * * *', () => {
   });
 });
 const updateCheck = new CronJob('0 */15 * * * *', () => {
+  console.log('updateCheck');
   talking.setSubject('ikgaeveneendutjedoen');
   talking.saySomething('', true);
   setTimeout(() => {
