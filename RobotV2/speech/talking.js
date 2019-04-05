@@ -31,15 +31,15 @@ function saySomething(target) {
     console.log(thingToSay);
 
     isTalking = true;
-    player.play("./speech/" + greeting + ".mp3", (err) => {
+    player.play("./speech/" + greeting + ".mp3", { omxplayer: ['-o', 'output']}, (err) => {
         if (err) throw err;
 
         if (target != '') {
-            player.play("./speech/" + target + ".mp3", (err) => {
+            player.play("./speech/" + target + ".mp3", { omxplayer: ['-o', 'output']}, (err) => {
                 if (err) throw err;
 
                 if (subject) {
-                    player.play("./speech/" + subject + ".mp3", (err) => {
+                    player.play("./speech/" + subject + ".mp3", { omxplayer: ['-o', 'output']}, (err) => {
                         if (err) throw err;
 
                         isTalking = false;
