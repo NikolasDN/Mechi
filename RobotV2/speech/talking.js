@@ -28,6 +28,7 @@ function saySomething(target) {
     let thingToSay = greeting + target + ((subject) ? subject : '');
     if (thingsSaid.includes(thingToSay)) return;
     thingsSaid.push(thingToSay);
+    console.log(thingToSay);
 
     isTalking = true;
     player.play("./speech/" + greeting + ".mp3", (err) => {
@@ -67,5 +68,6 @@ function setSubject(s) {
 module.exports = {
     saySomething,
     setSubject,
-    names
+    names,
+    thingsSaid
 }

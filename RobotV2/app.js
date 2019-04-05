@@ -51,6 +51,7 @@ function trainFaces() {
 
 const batteryCheck = new CronJob('0 */5 * * * *', () => {
   //console.log('You will see this message every minute');
+  talking.thingsSaid = [];
   si.battery((info) => {
     if (info.percent < 20) {
       talking.setSubject('mijnbatterijisbijnaplat');
