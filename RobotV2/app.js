@@ -37,7 +37,7 @@ function trainFaces() {
     let files = fs.readdirSync('output/' + folder + '/');
     if (files) {
       files.forEach(file => {
-        console.log(file);
+        //console.log(file);
         let trainImage = cv.imread(path.resolve('output/' + folder + '/', file));
         trainImage = trainImage.bgrToGray();
         trainImages.push(trainImage);
