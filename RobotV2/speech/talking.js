@@ -3,10 +3,13 @@ let subject = null;
 let names = [];
 let isTalking = false;
 let thingsSaid = [];
+let latency = 2000;
 
 function saySomething(target) {
     if (isTalking) return;
     if (target == null) return;   
+
+    console.log('ik kan nog spreken');
 
     // greeting
     let greeting = "hallo";
@@ -33,31 +36,55 @@ function saySomething(target) {
     isTalking = true;
     player.play("./speech/" + greeting + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
         if (err) throw err;
+    });
 
-        if (target != '') {
-            player.play("./speech/" + target + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
+    if (target != '') {
+        setTimeout(() => {
+            //if (target != '') {
+                player.play("./speech/" + target + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
+                    if (err) throw err;
+                });
+                if (!subject) {
+                    isTalking = false;
+                }
+            //}
+        },latency);
+    }    
+    else {
+        if (!subject) {
+            isTalking = false;
+        }
+    }
+
+    if (subject) {
+        setTimeout(() => {
+            player.play("./speech/" + subject + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
                 if (err) throw err;
 
-                if (subject) {
-                    player.play("./speech/" + subject + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
-                        if (err) throw err;
+                //isTalking = false;
 
-                        isTalking = false;
-
-                        // cleanup
-                        subject = null;
-                    });
-                }
-                else {
-                    isTalking = false;
-
-                }
+                // cleanup
+                //subject = null;
             });
-        }
-        else {
             isTalking = false;
-        }        
-    });
+
+            // cleanup
+            subject = null;
+        },(target == '' ? latency : latency * 2));
+    }
+    else {
+        isTalking = false;
+    }
+    //             else {
+    //                 isTalking = false;
+
+    //             }
+    //         });
+    //     }
+    //     else {
+    //         isTalking = false;
+    //     }        
+    // });
     
 }
 
