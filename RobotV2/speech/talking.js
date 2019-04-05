@@ -1,4 +1,4 @@
-const player = require('play-sound')(opts = { }); //player: 'mpg123' });
+const player = require('play-sound')(opts = { players: ['omxplayer', 'mpg123'] });
 let subject = null;
 let names = [];
 let isTalking = false;
