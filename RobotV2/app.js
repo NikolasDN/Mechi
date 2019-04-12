@@ -49,11 +49,6 @@ function trainFaces() {
   recognizer.train(trainImages, labels);
 }
 
-const talkingCheck = new CronJob('*/5 * * * * *', () => {
-  console.log('talkingCheck');
-  talking.isTalking = false;
-});
-
 const batteryCheck = new CronJob('0 */5 * * * *', () => {
   //console.log('You will see this message every minute');
   console.log('batteryCheck');
@@ -85,7 +80,6 @@ loudness.setVolume(100, function (err) {
 talking.setSubject('ikheblekkergeslapen');
 talking.saySomething('', true);
 
-talkingCheck.start();
 batteryCheck.start();
 updateCheck.start();
 

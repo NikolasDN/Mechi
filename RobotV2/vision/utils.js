@@ -21,7 +21,7 @@ const grabFrames = (videoFile, delay, onFrame) => {
     }
     onFrame(frame);
 
-  }, 5000);
+  }, 1000);
 };
 exports.grabFrames = grabFrames;
 
