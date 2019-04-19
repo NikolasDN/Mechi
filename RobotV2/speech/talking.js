@@ -65,9 +65,13 @@ function setSubject(s) {
     subject = s;
 }
 
+function clearThingsSaid() {
+    thingsSaid = [];
+}
+
 module.exports = {
     saySomething,
     setSubject,
     names,
-    thingsSaid
+    clearThingsSaid
 }

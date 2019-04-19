@@ -49,10 +49,10 @@ function trainFaces() {
   recognizer.train(trainImages, labels);
 }
 
-const batteryCheck = new CronJob('0 */5 * * * *', () => {
+const batteryCheck = new CronJob('0 */1 * * * *', () => {
   //console.log('You will see this message every minute');
   console.log('batteryCheck');
-  talking.thingsSaid = [];
+  talking.clearThingsSaid();
   si.battery((info) => {
     if (info.percent < 20) {
       talking.setSubject('mijnbatterijisbijnaplat');
