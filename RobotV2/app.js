@@ -24,7 +24,7 @@ function detectFaces(img) {
     scaleFactor: 1.2,
     minNeighbors: 10
   };
-  return classifier.detectMultiScale(img.bgrToGray(), options).objects;
+  return classifier.detectMultiScaleGpu(img.bgrToGray(), options).objects;
 }
 
 function trainFaces() {
