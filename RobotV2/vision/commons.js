@@ -7,7 +7,7 @@ const {
   const { extractResults } = require('./dnn/ssdUtils');
   const uuid = require('uuid/v1');
   const talking = require('../speech/talking');
-  const learning = false;
+  const learning = true;
   
   exports.runVideoFaceDetection = (src, detectFaces, recognizer) => grabFrames(src, 1, (frame) => {
     console.time('detection time');
