@@ -12,6 +12,8 @@ const {
   exports.runVideoFaceDetection = (src, detectFaces, recognizer) => grabFrames(src, 1, (frame) => {
     console.time('detection time');
     const frameResized = frame.resizeToMax(800);
+
+    cv.imwrite(`./output/${uuid()}.png`, frameResized);
   
     // detect faces
     const faceRects = detectFaces(frameResized);
