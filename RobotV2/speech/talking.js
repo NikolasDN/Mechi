@@ -38,27 +38,31 @@ function saySomething(target) {
             player.play("./speech/" + target + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
                 if (err) throw err;
 
-                if (subject) {
-                    player.play("./speech/" + subject + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
-                        if (err) throw err;
-
-                        isTalking = false;
-
-                        // cleanup
-                        subject = null;
-                    });
-                }
-                else {
-                    isTalking = false;
-
-                }
+                saySubject();
             });
         }
         else {
-            isTalking = false;
+            saySubject();
         }        
     });
     
+}
+
+function saySubject() {
+    if (subject) {
+        player.play("./speech/" + subject + ".mp3", { omxplayer: ['-o', 'local']}, (err) => {
+            if (err) throw err;
+
+            isTalking = false;
+
+            // cleanup
+            subject = null;
+        });
+    }
+    else {
+        isTalking = false;
+
+    }
 }
 
 function setSubject(s) {
