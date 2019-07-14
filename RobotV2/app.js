@@ -11,6 +11,7 @@ const loudness = require('mwl-loudness');
 //const recognizer = new cv.FisherFaceRecognizer();
 const recognizer = new cv.LBPHFaceRecognizer();
 const talking = require('./speech/talking');
+const doStuff = require('./motor/dostuff');
 
 
 const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT2);
@@ -83,6 +84,12 @@ talking.saySomething('', true);
 batteryCheck.start();
 //updateCheck.start();
 
-runVideoFaceDetection(webcamPort, detectFaces, recognizer);
+try {
+  runVideoFaceDetection(webcamPort, detectFaces, recognizer);
+}
+catch(err) {
+  talking.setSubject('helpikzieniks');
+  talking.saySomething('', true);
+}
 
 // test
