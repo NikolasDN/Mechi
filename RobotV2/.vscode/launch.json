@@ -7,8 +7,14 @@
         {
             "type": "node",
             "request": "launch",
-            "runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
             "name": "Launch Program",
+            "program": "${workspaceFolder}/app.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
+            "name": "Launch Program Nodemon",
             "program": "${workspaceFolder}/app.js",
             "restart": true
         }
