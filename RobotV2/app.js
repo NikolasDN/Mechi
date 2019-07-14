@@ -59,17 +59,17 @@ const batteryCheck = new CronJob('0 */1 * * * *', () => {
     }
   });
 });
-const updateCheck = new CronJob('0 */15 * * * *', () => {
-  console.log('updateCheck');
-  talking.setSubject('ikgaeveneendutjedoen');
-  talking.saySomething('', true);
-  setTimeout(() => {
-    git.pull(() => {
-      // update should be pulled
-      console.log('updated');
-    });
-  }, 5000);
-});
+// const updateCheck = new CronJob('0 */15 * * * *', () => {
+//   console.log('updateCheck');
+//   talking.setSubject('ikgaeveneendutjedoen');
+//   talking.saySomething('', true);
+//   setTimeout(() => {
+//     git.pull(() => {
+//       // update should be pulled
+//       console.log('updated');
+//     });
+//   }, 5000);
+// });
 
 trainFaces();
 
@@ -81,7 +81,7 @@ talking.setSubject('ikheblekkergeslapen');
 talking.saySomething('', true);
 
 batteryCheck.start();
-updateCheck.start();
+//updateCheck.start();
 
 runVideoFaceDetection(webcamPort, detectFaces, recognizer);
 
