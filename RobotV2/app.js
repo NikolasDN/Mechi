@@ -11,7 +11,7 @@ const loudness = require('mwl-loudness');
 //const recognizer = new cv.FisherFaceRecognizer();
 const recognizer = new cv.LBPHFaceRecognizer();
 const talking = require('./speech/talking');
-const doStuff = require('./motor/dostuff');
+//const doStuff = require('./motor/dostuff');
 
 
 const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT2);
