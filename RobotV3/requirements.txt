@@ -1,0 +1,5 @@
+Flask
+Response
+numpy
+opencv-python
+python-dotenv

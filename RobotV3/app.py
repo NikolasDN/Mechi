@@ -2,7 +2,7 @@ from flask import Flask, render_template, Response
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(-1)
 
 app = Flask(__name__)
 
@@ -25,8 +25,8 @@ def gen():
         # while True:
         frame = get_frame()
         (flag, encodedImage) = cv2.imencode(".jpg", frame)
-        # if not flag:
-		# 	continue
+        if not flag:
+            continue
         yield (b'--frame\r\n'
             b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encodedImage) + b'\r\n')
 @app.route('/video_feed')
