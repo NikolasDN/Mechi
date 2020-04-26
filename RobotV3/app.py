@@ -1,8 +1,11 @@
 from flask import Flask, render_template, Response
 import numpy as np
 import cv2
+from gpiozero import LEDBoard
 
 cap = cv2.VideoCapture(-1)
+
+leds = LEDBoard(17, 18, 15, 27)
 #my_message = "Started";
 
 app = Flask(__name__)
@@ -23,6 +26,7 @@ def switchlight():
     #Moving forward code
     #my_message = "Green!"
     print('Green!')
+    leds[0].on()
     return "Nothing"
 def gen():
     """Video streaming generator function."""
