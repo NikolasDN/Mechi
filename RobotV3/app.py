@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 
 cap = cv2.VideoCapture(-1)
+#my_message = "Started";
 
 app = Flask(__name__)
 
@@ -17,6 +18,12 @@ def get_frame():
 def index():
     """Video streaming home page."""
     return render_template('index.html')
+@app.route("/switchlight/")
+def switchlight():
+    #Moving forward code
+    #my_message = "Green!"
+    print('Green!')
+    return "Nothing"
 def gen():
     """Video streaming generator function."""
     while True:

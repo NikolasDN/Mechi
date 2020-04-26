@@ -2,9 +2,14 @@
   <head>
     <title>Mechi V3</title>
     <link rel="stylesheet" href='../static/style.css'/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+    <script type=text/javascript> $(function() { $("#green").click(function (event) { $.getJSON('/switchlight', { },
+    function(data) { }); return false; }); }); </script> 
   </head>
   <body>
+    <h2>{{ my_message }} </h2>
     <h3><img src="{{ url_for('video_feed') }}" width="50%"></h3>
     <hr>
+    <button id="green">Groen</button>
   </body>
 </html>
