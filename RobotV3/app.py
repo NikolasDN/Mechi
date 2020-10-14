@@ -29,7 +29,7 @@ def switchlight():
     #Moving forward code
     #my_message = "Green!"
     print('Green!')
-    leds[0].on()
+    leds[0].toggle()
     return "Nothing"
 
 def gen(camera):
