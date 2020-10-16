@@ -32,12 +32,24 @@ def switchlight():
     leds[0].toggle()
     return "Nothing"
 
+@app.route("/press/<nr>")
+def press(nr):
+    print('press!')
+    leds[nr].on()
+    return "Nothing"
+
+@app.route("/release/<nr>")
+def release(nr):
+    print('release!')
+    leds[nr].off()
+    return "Nothing"
+
 def gen(camera):
     """Video streaming generator function."""
     while True:
         frame = camera.get_frame()
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
