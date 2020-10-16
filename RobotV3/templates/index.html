@@ -19,17 +19,17 @@
         $("#down").mousedown(function (event) { $.getJSON('/press/3', { }, function(data) { }); return false; });
         $("#down").mouseup(function (event) { $.getJSON('/release/3', { }, function(data) { }); return false; });
 
-        $("#up").touchstart(function (event) { $.getJSON('/press/0', { }, function(data) { }); return false; });
-        $("#up").touchend(function (event) { $.getJSON('/release/0', { }, function(data) { }); return false; });
+        $("#up").on('touchstart', function (event) { $.getJSON('/press/0', { }, function(data) { }); return false; });
+        $("#up").on('touchend', function (event) { $.getJSON('/release/0', { }, function(data) { }); return false; });
 
-        $("#left").touchstart(function (event) { $.getJSON('/press/1', { }, function(data) { }); return false; });
-        $("#left").touchend(function (event) { $.getJSON('/release/1', { }, function(data) { }); return false; });
+        $("#left").on('touchstart', function (event) { $.getJSON('/press/1', { }, function(data) { }); return false; });
+        $("#left").on('touchend', function (event) { $.getJSON('/release/1', { }, function(data) { }); return false; });
 
-        $("#right").touchstart(function (event) { $.getJSON('/press/2', { }, function(data) { }); return false; });
-        $("#right").touchend(function (event) { $.getJSON('/release/2', { }, function(data) { }); return false; });
+        $("#right").on('touchstart', function (event) { $.getJSON('/press/2', { }, function(data) { }); return false; });
+        $("#right").on('touchend', function (event) { $.getJSON('/release/2', { }, function(data) { }); return false; });
 
-        $("#down").touchstart(function (event) { $.getJSON('/press/3', { }, function(data) { }); return false; });
-        $("#down").touchend(function (event) { $.getJSON('/release/3', { }, function(data) { }); return false; });
+        $("#down").on('touchstart', function (event) { $.getJSON('/press/3', { }, function(data) { }); return false; });
+        $("#down").on('touchend', function (event) { $.getJSON('/release/3', { }, function(data) { }); return false; });
       });
     </script> 
   </head>
