@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, send_from_directory
 # import numpy as np
 # import cv2
 # Raspberry Pi camera module (requires picamera package, developed by Miguel Grinberg)
@@ -23,6 +23,10 @@ app = Flask(__name__)
 def index():
     """Video streaming home page."""
     return render_template('index.html')
+
+@app.route('/static/assets/<path:path>')
+def send_js(path):
+    return send_from_directory('static/assets/', path)
 
 @app.route("/switchlight/")
 def switchlight():
