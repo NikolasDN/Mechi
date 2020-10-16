@@ -1,6 +1,6 @@
 body{
-	background: blue;
-	color: yellow;
+	background-image: url('../assets/camouflage.jpg');;
+	color: white;
 	padding:1%
 }
 .button {
