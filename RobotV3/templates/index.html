@@ -18,6 +18,18 @@
 
         $("#down").mousedown(function (event) { $.getJSON('/press/3', { }, function(data) { }); return false; });
         $("#down").mouseup(function (event) { $.getJSON('/release/3', { }, function(data) { }); return false; });
+
+        $("#up").touchstart(function (event) { $.getJSON('/press/0', { }, function(data) { }); return false; });
+        $("#up").touchend(function (event) { $.getJSON('/release/0', { }, function(data) { }); return false; });
+
+        $("#left").touchstart(function (event) { $.getJSON('/press/1', { }, function(data) { }); return false; });
+        $("#left").touchend(function (event) { $.getJSON('/release/1', { }, function(data) { }); return false; });
+
+        $("#right").touchstart(function (event) { $.getJSON('/press/2', { }, function(data) { }); return false; });
+        $("#right").touchend(function (event) { $.getJSON('/release/2', { }, function(data) { }); return false; });
+
+        $("#down").touchstart(function (event) { $.getJSON('/press/3', { }, function(data) { }); return false; });
+        $("#down").touchend(function (event) { $.getJSON('/release/3', { }, function(data) { }); return false; });
       });
     </script> 
   </head>
@@ -25,15 +37,15 @@
     <img src="{{ url_for('video_feed') }}" width="100%">
     <hr>
     <div class="flex-container">
-      <div id="up" style="background-image: url('/static/assets/up.png'); background-size: contain;"></div>
+      <div id="up" style="background-image: url('static/assets/up.png'); background-size: contain;"></div>
     </div>
     <div class="flex-container">
-      <div id="left" style="background-image: url('/static/assets/left.png'); background-size: contain;"></div>
+      <div id="left" style="background-image: url('static/assets/left.png'); background-size: contain;"></div>
       <div></div>
-      <div id="right" style="background-image: url('/static/assets/right.png'); background-size: contain;"></div>
+      <div id="right" style="background-image: url('static/assets/right.png'); background-size: contain;"></div>
     </div>
     <div class="flex-container">
-      <div id="down" style="background-image: url('/static/assets/down.png'); background-size: contain;"></div>
+      <div id="down" style="background-image: url('static/assets/down.png'); background-size: contain;"></div>
     </div>
     <button id="green">Groen</button>
   </body>
