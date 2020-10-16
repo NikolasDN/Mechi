@@ -7,7 +7,7 @@ from gpiozero import LEDBoard
 
 # cap = cv2.VideoCapture(-1)
 
-leds = LEDBoard(0, 3, 15, 27)# LEDBoard(17, 18, 15, 27)
+leds = LEDBoard(0, 3, 15, 27, pwm=False, active_high=False, initial_value=False, pin_factory=None)# LEDBoard(17, 18, 15, 27)
 #my_message = "Started";
 
 app = Flask(__name__)
