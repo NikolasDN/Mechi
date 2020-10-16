@@ -35,13 +35,13 @@ def switchlight():
 @app.route("/press/<nr>")
 def press(nr):
     print('press!')
-    leds[nr].on()
+    leds[int(nr)].on()
     return "Nothing"
 
 @app.route("/release/<nr>")
 def release(nr):
     print('release!')
-    leds[nr].off()
+    leds[int(nr)].off()
     return "Nothing"
 
 def gen(camera):
