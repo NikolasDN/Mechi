@@ -7,7 +7,7 @@ from gpiozero import LEDBoard
 
 # cap = cv2.VideoCapture(-1)
 
-leds = LEDBoard(17, 18, 15, 27)
+leds = LEDBoard(0, 3, 15, 27)# LEDBoard(17, 18, 15, 27)
 #my_message = "Started";
 
 app = Flask(__name__)
@@ -39,13 +39,17 @@ def switchlight():
 @app.route("/press/<nr>")
 def press(nr):
     print('press!')
-    leds[int(nr)].on()
+    # leds[int(nr)].on()
+    leds[0].on()
+    leds[1].on()
     return "Nothing"
 
 @app.route("/release/<nr>")
 def release(nr):
     print('release!')
-    leds[int(nr)].off()
+    # leds[int(nr)].off()
+    leds[0].off()
+    leds[1].off()
     return "Nothing"
 
 def gen(camera):
