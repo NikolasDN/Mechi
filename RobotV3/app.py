@@ -10,7 +10,7 @@ from gpiozero import LEDBoard
 leds = LEDBoard(0, 1, 2, 3, 4, pwm=False, active_high=False, initial_value=False, pin_factory=None)# LEDBoard(17, 18, 15, 27)
 #my_message = "Started";
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 # def get_frame():
 #     while(cap.isOpened()):
@@ -24,9 +24,9 @@ def index():
     """Video streaming home page."""
     return render_template('index.html')
 
-@app.route('/static/assets/<path:path>')
-def send_js(path):
-    return send_from_directory('static/assets/', path)
+# @app.route('/static/assets/<path:path>')
+# def send_js(path):
+#     return send_from_directory('static/assets/', path)
 
 @app.route("/switchlight/")
 def switchlight():
