@@ -66,8 +66,8 @@ def press(nr):
         leds[4].on()
     return "Nothing"
 
-@app.route("/release/<nr>")
-def release(nr):
+@app.route("/release")
+def release():
     print('release!')
     # leds[int(nr)].off()
     leds[0].off()
